@@ -1,8 +1,8 @@
 
- <app-tarjeta-modal></app-tarjeta-modal>
+ <app-modal-detalle-consumo></app-modal-detalle-consumo>
  <div class="row">
    <div class="col">
-     <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modalTarjeta" (click)="resetForm()">Nueva Tarjeta</button>
+     <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modalDetalle" (click)="resetForm()">Nuevo Detalle</button>
      <table class="table table-hover">
          <thead>
              <tr>
@@ -15,16 +15,16 @@
              </tr>
          </thead>
          <tbody>
-           <tr *ngFor="let tarjeta of tarjetas">
-             <td>{{tarjeta.idTarjeta}}</td>
-             <td>{{tarjeta.numtarjeta}}</td>
-             <td>{{tarjeta.tiptarjeta}}</td>
-             <td>{{tarjeta.cliente.nombre}}</td>
+           <tr *ngFor="let detalle of detalles">
+             <td>{{detalle.idDetalleConsumo}}</td>
+             <td>{{detalle.fecha}}</td>
+             <td>{{detalle.descripcion}}</td>
+             <td>{{detalle.monto}}</td>
              <td>
-                 <button class="btn btn-primary" (click)="onPreUpdateTarjeta(tarjeta)" data-toggle="modal" data-target="#modalTarjeta">Actualizar</button>
+                 <button class="btn btn-primary" (click)="onPreUpdateDetalle(detalle)" data-toggle="modal" data-target="#modalDetalle">Actualizar</button>
              </td>
              <td>
-                 <a href="/tarjeta" class="btn btn-danger" (click)="onDeleteTarjeta(tarjeta.idTarjeta)">Eliminar</a>
+                <a href="#"  class="btn btn-danger" (click)="onDeleteDetalle(detalle.idDetalleConsumo)">Eliminar</a>
              </td>
            </tr>   
          </tbody>

@@ -23,7 +23,7 @@
              <td>{{tarjeta.ccv}}</td>
              <td>{{tarjeta.tiptarjeta}}</td>
              <td>{{tarjeta.cliente.nombre}}</td>
-             <td><a href="/detalleConsumo"  class="btn btn-link">Ver</a></td>
+             <td><a [routerLink]="['/detalleConsumo/tarjeta/', tarjeta.idTarjeta]"  class="btn btn-link">Ver</a></td>
              <td>
                  <button class="btn btn-primary" (click)="onPreUpdateTarjeta(tarjeta)" data-toggle="modal" data-target="#modalTarjeta">Actualizar</button>
              </td>

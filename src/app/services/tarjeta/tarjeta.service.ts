@@ -56,4 +56,9 @@ export class TarjetaService {
     const url_api = `http://localhost:8080/tarjetas/`;
     return this.http.post(url_api, tarjeta);
   }
+  
+  buscar(id: number){
+    const url_api = `http://localhost:8080/tarjetas/buscar/${id}`;
+    return this.http.get(url_api);
+  }
 }

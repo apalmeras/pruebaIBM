@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DetalleConsumoService } from 'src/app/services/detalle-consumo.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-modal-detalle-consumo',
@@ -17,13 +18,13 @@ export class ModalDetalleConsumoComponent implements OnInit {
   onSaveDetalle(detalleForm: NgForm): void {
     console.log(detalleForm.value);
     if(detalleForm.value.idDetalleConsumo==0){
-      console.log("agregar cliente");
-      this.detalleService.saveDetalle(detalleForm.value).subscribe(cliente =>{
+      console.log("agregar detalle");
+      this.detalleService.saveDetalle(detalleForm.value).subscribe(detalle =>{
         location.reload()
       })
     }else{
-      console.log("actualizar cliente");
-      this.detalleService.editDetalle(detalleForm.value).subscribe(cliente =>{
+      console.log("actualizar detalle");
+      this.detalleService.editDetalle(detalleForm.value).subscribe(detalle =>{
         location.reload()
       })
     }

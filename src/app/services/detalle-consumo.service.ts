@@ -42,6 +42,13 @@ export class DetalleConsumoService {
 
   getDetalle(){
     const url_api = "http://localhost:8080/detalleConsumo";
+    console.log(url_api);
+    return this.http.get(url_api);
+  }
+
+  getDetalleTarjeta(id: number){
+    const url_api = `http://localhost:8080/detalleConsumo/tarjeta/${id}`;
+    console.log(url_api);
     return this.http.get(url_api);
   }
 
