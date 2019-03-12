@@ -45,11 +45,15 @@ export class TarjetaModalComponent implements OnInit {
   onSaveTarjeta(tarjetaForm: NgForm): void {
     if(this.validarFormulario(tarjetaForm)){
     //tarjetaForm.value.cliente=this.tarjetaService.clienteTarjeta;
-      this.clienteSelected = parseInt(this.tarjetaService.clienteSelected,2);
+      var x= +this.tarjetaService.clienteSelected;
+
+      this.clienteSelected = parseInt(this.tarjetaService.clienteSelected.toString().trim(),2);
+      
       console.log(`valor seleccionado ${this.tarjetaService.clienteSelected}`);
       console.log(`valor seleccionado ${this.clienteSelected}`);
-      
-      this.selectedCliente.idCliente = this.clienteSelected;
+      console.log(`valor seleccionado ${x}`);
+     
+      this.selectedCliente.idCliente = x;
       tarjetaForm.value.cliente = this.selectedCliente;
 
       console.log(tarjetaForm.value);
