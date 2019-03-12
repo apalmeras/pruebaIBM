@@ -1,0 +1,31 @@
+
+ <app-modal-asesor></app-modal-asesor>
+<div class="row">
+  <div class="col">
+    <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modalAsesor" (click)="resetForm()">Nuevo Asesor</button>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>ESPECIALIDAD</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asesor of asesores">
+            <td>{{asesor.idAsesor}}</td>
+            <td>{{asesor.nombre}}</td>
+            <td>{{asesor.especialidad}}</td>
+            <td>
+                <button class="btn btn-primary" (click)="onPreUpdateAsesor(asesor)" data-toggle="modal" data-target="#modalAsesor">Actualizar</button>
+            </td>
+            <td>
+                <a href="/asesor" class="btn btn-danger" (click)="onDeleteBook(asesor.idAsesor)">Eliminar</a>
+            </td>
+          </tr>   
+        </tbody>
+    </table>
+  </div>
+</div>
