@@ -56,6 +56,7 @@ export class TarjetaComponent implements OnInit {
       tiptarjeta:'',
       cliente:this.tarjetaService.clienteTarjeta
     };
+    this.tarjetaService.clienteSelected = "0";
   }
 
 }

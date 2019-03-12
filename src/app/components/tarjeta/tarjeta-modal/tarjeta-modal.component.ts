@@ -99,4 +99,5 @@ export class TarjetaModalComponent implements OnInit {
     }
   }
 
+  
 }
