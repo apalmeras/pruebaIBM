@@ -12,7 +12,7 @@
         <div class="modal-body">
           <form class="form-cliente" #formDetalle="ngForm" (ngSubmit)="onSaveDetalle(formDetalle)">
             <input type="hidden" id="idDetalleConsumo" name="idDetalleConsumo" class="form-control" [(ngModel)]="this.detalleService.selectedDetalle.idDetalleConsumo" >
-            <input type="text" id="tarjeta" name="tarjeta" class="form-control" [(ngModel)]="this.detalleService.selectedTarjeta" >
+            <input type="hidden" id="tarjeta" name="tarjeta" class="form-control" [(ngModel)]="this.detalleService.selectedTarjeta" >
             <div class="form-group">
               <label for="">Fecha</label>
               <input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha" [(ngModel)]="this.detalleService.selectedDetalle.fecha" >
