@@ -10,26 +10,30 @@
           </button>
         </div>
         <div class="modal-body">
+          <div class="alert alert-danger" role="alert" *ngIf="isError">
+                {{error}}
+          </div>
           <form class="form-tarjeta" #formTarjeta="ngForm" (ngSubmit)="onSaveTarjeta(formTarjeta)">
             <input type="hidden" id="idTarjeta" name="idTarjeta" class="form-control" [(ngModel)]="this.tarjetaService.selectedTarjeta.idTarjeta" >
             <div class="form-group">
               <label for="">Número</label>
-              <input type="number"  maxlength="12" id="numtarjeta" name="numtarjeta" class="form-control"  [(ngModel)]="this.tarjetaService.selectedTarjeta.numtarjeta" >
+              <input type="number"  maxlength="12" id="numtarjeta" name="numtarjeta" class="form-control"  [(ngModel)]="this.tarjetaService.selectedTarjeta.numtarjeta" required >
             </div>
             <div class="form-group">
                 <label for="">CCV</label>
-                <input type="number" maxlength="4" id="ccv" name="ccv" class="form-control" placeholder="CCV"  [(ngModel)]="this.tarjetaService.selectedTarjeta.ccv">
+                <input type="number" #ccv="ngModel" minlength="3" maxlength="4" id="ccv" name="ccv" class="form-control" placeholder="CCV"  [(ngModel)]="this.tarjetaService.selectedTarjeta.ccv" required>
             </div>
             <div class="form-group">
                 <label for="">Tipo de Tarjeta</label>
-                <input type="text" id="tiptarjeta" name="tiptarjeta" class="form-control" placeholder="Tipo de Tarjeta"  [(ngModel)]="this.tarjetaService.selectedTarjeta.tiptarjeta">
+                <input type="text" id="tiptarjeta" name="tiptarjeta" class="form-control" placeholder="Tipo de Tarjeta"  [(ngModel)]="this.tarjetaService.selectedTarjeta.tiptarjeta" required> 
             </div>
             
             <div class="form-group" >
                 <label for="">Cliente</label>
-                <select  id="cliente" name="cliente" [(ngModel)]="cliente" class="form-control" >
-                  <option *ngFor="let cliente of clientes" [value]="cliente.id">
-                    {{cliente.nombre}}
+                <select  id="cliente" name="cliente" [(ngModel)]="this.tarjetaService.clienteSelected" class="form-control" required>
+                  <option value="0">Seleccione cliente</option>
+                  <option *ngFor="let c of clientes" [value]="c.idCliente">
+                    {{c.nombre}}
                   </option>
                 </select>
             </div>

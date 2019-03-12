@@ -10,15 +10,19 @@
           </button>
         </div>
         <div class="modal-body">
+         
+          <div class="alert alert-danger" role="alert" *ngIf="isError">
+              Llene la información correctamente
+          </div>
           <form class="form-asesor" #formAsesor="ngForm" (ngSubmit)="onSaveAsesor(formAsesor)">
             <input type="hidden" id="idAsesor" name="idAsesor" class="form-control" [(ngModel)]="this.asesorService.selectedAsesor.idAsesor" >
             <div class="form-group">
               <label for="">Nombre</label>
-              <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" [(ngModel)]="this.asesorService.selectedAsesor.nombre" >
+              <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" [(ngModel)]="this.asesorService.selectedAsesor.nombre" required>
             </div>
             <div class="form-group">
                 <label for="">Especialidad</label>
-                <input type="text" id="especialidad" name="especialidad" class="form-control" placeholder="Especialidad"  [(ngModel)]="this.asesorService.selectedAsesor.especialidad">
+                <input type="text" id="especialidad" name="especialidad" class="form-control" placeholder="Especialidad"  [(ngModel)]="this.asesorService.selectedAsesor.especialidad" required>
               </div>
           
             <button type="submit" class="btn btn-primary float-right">Guardar Asesor</button>

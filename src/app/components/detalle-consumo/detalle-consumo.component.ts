@@ -25,8 +25,10 @@ export class DetalleConsumoComponent implements OnInit {
   
   constructor(private detalleService: DetalleConsumoService, private _route: ActivatedRoute, private tarjetaService: TarjetaService) {
       this.idTarjeta = parseInt(this._route.snapshot.paramMap.get('id'),10);
-     
-      console.log(this.idTarjeta);
+      this.tarjetaSelected.idTarjeta = this.idTarjeta;
+      if(this.idTarjeta>0){
+        this.getTarjeta();
+      }
    }
   private detalles: DetalleConsumo;
 
@@ -36,6 +38,10 @@ export class DetalleConsumoComponent implements OnInit {
     }else{
       this.getDetalles();
     }
+  }
+
+  getTarjeta(){
+    this.tarjetaService.buscar(this.idTarjeta).subscribe((tarjetaSelected: Tarjeta)=>(this.tarjetaSelected=tarjetaSelected));
   }
 
 
@@ -59,6 +65,7 @@ export class DetalleConsumoComponent implements OnInit {
 
   onPreUpdateDetalle(detalle: DetalleConsumo): void {
     this.detalleService.selectedDetalle=Object.assign({},detalle);
+    this.detalleService.selectedTarjeta=this.tarjetaSelected;
   }
 
   resetForm(clienteForm?: NgForm): void {
@@ -69,21 +76,7 @@ export class DetalleConsumoComponent implements OnInit {
       ciudad: '',
       telefono: ''
     }
-    this.detalleService.selectedTarjeta={
-      idTarjeta: 0,
-      numtarjeta: 0,
-      ccv: 0,
-      tiptarjeta: '',
-      cliente: this.detalleService.selectedCliente ,
-    }
-  
-    this.detalleService.selectedDetalle = {
-      idDetalleConsumo:0,
-      tarjeta: this.detalleService.selectedTarjeta,
-      fecha: null,
-      descripcion: '',
-      monto: 0
-    }
+    this.detalleService.selectedTarjeta=this.tarjetaSelected;
     
   }
 }

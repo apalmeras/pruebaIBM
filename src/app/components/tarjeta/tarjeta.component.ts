@@ -38,6 +38,7 @@ export class TarjetaComponent implements OnInit {
   onPreUpdateTarjeta(tarjeta: Tarjeta): void {
     this.tarjetaService.selectedTarjeta=Object.assign({},tarjeta);
     this.tarjetaService.clienteTarjeta=this.tarjetaService.selectedTarjeta.cliente;
+    this.tarjetaService.clienteSelected=this.tarjetaService.selectedTarjeta.cliente.idCliente.toString();
   }
 
   resetForm(clienteForm?: NgForm): void {

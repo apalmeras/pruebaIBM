@@ -12,6 +12,7 @@ export class TarjetaService {
 
   constructor(private http: HttpClient) { }
 
+  public clienteSelected:string="0";
 
   public clienteTarjeta: Cliente ={
     idCliente: 0,

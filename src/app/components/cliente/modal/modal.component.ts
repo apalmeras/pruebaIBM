@@ -13,24 +13,33 @@ import { ClienteService } from 'src/app/services/cliente/cliente.service';
 export class ModalComponentCliente implements OnInit {
 
   constructor(private clienteService: ClienteService, location: Location) { }
+  private isError = false;
 
   ngOnInit() {
   }
 
   
   onSaveCliente(clienteForm: NgForm): void {
-    console.log(clienteForm.value);
-    if(clienteForm.value.idCliente==0){
-      console.log("agregar cliente");
-      this.clienteService.saveCliente(clienteForm.value).subscribe(cliente =>{
-        location.reload()
-      })
+    if(clienteForm.valid){
+      console.log(clienteForm.value);
+      if(clienteForm.value.idCliente==0){
+        console.log("agregar cliente");
+        this.clienteService.saveCliente(clienteForm.value).subscribe(cliente =>{
+          location.reload()
+        })
+      }else{
+        console.log("actualizar cliente");
+        this.clienteService.editCliente(clienteForm.value).subscribe(cliente =>{
+          location.reload()
+        })
+      }
     }else{
-      console.log("actualizar cliente");
-      this.clienteService.editCliente(clienteForm.value).subscribe(cliente =>{
-        location.reload()
-      })
+      this.isError=true;
+      setTimeout(()=>{
+        this.isError=false;
+      },5000);
     }
   }
+  
 
 }

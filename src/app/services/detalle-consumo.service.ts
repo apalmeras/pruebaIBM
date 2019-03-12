@@ -59,6 +59,7 @@ export class DetalleConsumoService {
   }
 
   saveDetalle(detalle: DetalleConsumo){
+    detalle.tarjeta =this.selectedTarjeta;
     const url_api = `http://localhost:8080/detalleConsumo/`;
     return this.http.put(url_api, detalle);
   }
