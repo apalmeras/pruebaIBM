@@ -5,6 +5,7 @@ import { AsesorComponent } from './components/asesor/asesor.component';
 import { Page404Component } from './components/page404/page404.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
+import { DetalleConsumoComponent } from './components/detalle-consumo/detalle-consumo.component';
 
 const routes: Routes = 
 [
@@ -12,6 +13,8 @@ const routes: Routes =
     {path: 'asesor', component: AsesorComponent},
     {path: 'cliente', component: ClienteComponent},
     {path: 'tarjeta', component: TarjetaComponent},
+    {path: 'detalleConsumo', component: DetalleConsumoComponent},
+    {path: 'detalleConsumo/tarjeta/:id', component: DetalleConsumoComponent},
     {path: 'asesor/:id', component: AsesorComponent},
     {path: '**', component: Page404Component}
 ];

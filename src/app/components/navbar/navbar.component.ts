@@ -9,7 +9,7 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
-  public app_name= "PRUEBA";
+  public app_name= "PRUEBA IBM";
 
   ngOnInit() {
   }
